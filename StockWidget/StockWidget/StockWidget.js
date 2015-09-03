@@ -1,6 +1,6 @@
 ﻿
 wWidth = "260px";
-wHeight = "195px";
+wHeight = "500px";
 wFColor = "#627ea6";
 wTitle = "Hello";
 wURL = "http://widgets-gadgets.com";

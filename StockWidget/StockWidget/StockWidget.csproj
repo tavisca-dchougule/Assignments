@@ -59,8 +59,10 @@
   <ItemGroup>
     <Content Include="JavaScript\bootstrap.js" />
     <Content Include="JavaScript\data.js" />
+    <Content Include="JavaScript\FetchData.js" />
     <Content Include="JavaScript\WidgetCreate.js" />
     <Content Include="Resources\images\bg.png" />
+    <Content Include="Resources\images\img.png" />
     <Content Include="Resources\images\widget.gif" />
     <Content Include="css\Style.css" />
     <Content Include="testPage.html" />
