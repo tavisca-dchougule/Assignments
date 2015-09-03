@@ -1,3 +1,0 @@
-﻿
-fetchData("sensex", WidgetCallback);
-
