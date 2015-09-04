@@ -1,18 +1,28 @@
 ﻿window.StockWidget = window.StockWidget || {};
 
+function loadJavaScriptSync(filePath) {
+    var req = new XMLHttpRequest();
+    req.open("GET", filePath, false); 
+    req.send(null);
+
+    var headElement = document.getElementsByTagName("head")[0];
+    var newScriptElement = document.createElement("script");
+    newScriptElement.type = "text/javascript";
+    newScriptElement.text = req.responseText;
+    headElement.appendChild(newScriptElement);
+}
+loadJavaScriptSync("JavaScript/Init.js");
 StockWidget.CreateStockWidget = function () {
-    
+
     return {
         start: function () {
+
             document.write('<div id="stockWidget"></div>');
-            document.write('<scr' + 'ipt type="text/JavaScript" src="JavaScript/Init.js"></scr' + 'ipt>');
-            //document.write('<script type="text/javascript" src="JavaScript/Initializer.js"></script>');
             if (StockWidget.Initializer === undefined)
                 alert("hg");
-            window.StockWidget.Initializer = window.StockWidget.Initializer || {};
-           
-            var init = new StockWidget.Initializer();
-            init.initialize();
+
+            var initializer = new StockWidget.Initializer();
+            initializer.initialize();
         }
     };
 };

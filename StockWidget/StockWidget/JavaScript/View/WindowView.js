@@ -1,7 +1,6 @@
 ﻿window.StockWidget = window.StockWidget || {};
 window.StockWidget.View = window.StockWidget.View || {};
 
-
 StockWidget.View.WindowView = function () {
     var content = "";
     function createWindow() {
@@ -16,15 +15,15 @@ StockWidget.View.WindowView = function () {
         $("#dataContent").append('<ul id="list" ></ul>');
         $("#list").append('<li>' + '<a>Name:' + data.name + '</a>' + '</li><br/>');
         $("#list").append('<li>' + '<a>Last Price:' + data.lastprice + '</a>' + '</li><br/>');
-        $("#list").append('<li>' + '<a>Change:' + data.change+ '</a>' + '</li><br/>');
+        $("#list").append('<li>' + '<a>Change:' + data.change + '</a>' + '</li><br/>');
         $("#list").append('<li>' + '<a>Percent Change:' + data.percent_change + '</a>' + '</li><br/>');
         $("#list").append('<li>' + '<a>High:' + data.high + '</a>' + '</li><br/>');
         $("#list").append('<li>' + '<a>Low:' + data.low + '</a>' + '</li><br/>');
-       
+
     }
- 
+
     return {
         createWindow: createWindow,
-        updateContent:updateContent
+        updateContent: updateContent
     };
 }

@@ -1,7 +1,6 @@
 ﻿window.StockWidget = window.StockWidget || {};
 window.StockWidget.Helper = window.StockWidget.Helper || {};
 
-
 StockWidget.Helper.FetchWebData = function (argInput, argCallBackFunction) {
     var input = argInput;
     var callBackFunction = argCallBackFunction;
@@ -19,3 +18,4 @@ StockWidget.Helper.FetchWebData = function (argInput, argCallBackFunction) {
 
     };
 }
+alert("e");
