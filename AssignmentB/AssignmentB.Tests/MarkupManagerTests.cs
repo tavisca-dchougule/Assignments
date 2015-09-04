@@ -16,11 +16,18 @@ namespace AssignmentB.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void NullArgumentToCalculateMarkupShouldThrowException()
+        public void NullArgumentsToCalculateMarkupShouldThrowException()
         {
             MarkupManager manager = new MarkupManager();
             manager.CalculateMarkup(null,null);
             
+        }
+        [TestMethod]
+        public void ValidArgumentsToCalculateMarkup()//ShouldReturnListWithMarkupCalculated
+        {
+            MarkupManager manager = new MarkupManager();
+            manager.CalculateMarkup(DataAdapter.GetPublishedItinerary(), list);
+
         }
     }
 }

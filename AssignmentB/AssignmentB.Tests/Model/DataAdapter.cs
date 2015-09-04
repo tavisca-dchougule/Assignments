@@ -45,7 +45,7 @@ namespace AssignmentB.Tests.Model
            itinerary.OriginAirportCode = "001";
            itinerary.DestinationAirportCode = "005";
            itinerary.FlightTime = new TimeSpan(5, 0, 0);
-           itinerary.NumberOfStops = 2;
+           itinerary.NumberOfStops = 3;
            itinerary.TotalLayoverTime = new TimeSpan(1, 0, 0);
            itinerary.Airline = "airways";
            itinerary.UtcDepartureTime = DateTime.UtcNow;

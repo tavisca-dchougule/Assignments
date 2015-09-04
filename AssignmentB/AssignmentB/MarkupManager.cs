@@ -7,22 +7,25 @@ using System.Threading.Tasks;
 
 namespace AssignmentB
 {
+    internal class ChangeParametersGenerator
+    {
+        
+    }
+
     public class MarkupManager
     {
-        private int _minimumStops;
-        private int _maximumStops;
-        private TimeSpan _minimumFlightTime;
-        private TimeSpan _maximumFlightTime;
-        private TimeSpan _minimumLayoverTime;
-        private TimeSpan _maximumLayoverTime;
-        private decimal _minimumBasePrice;
-        private decimal _maximumBasePrice;
-
-        private decimal _valuePerFlightTime;
-        private decimal _valuePerLayoverTime;
-        private decimal _valuePerStop;
         private decimal _publishedPrice;
-
+        private int _minimumStops;
+        private TimeSpan _minimumFlightTime;
+        private TimeSpan _minimumLayoverTime;
+        private decimal _minimumBasePrice;
+        private TimeSpan _maximumFlightTime;
+        private TimeSpan _maximumLayoverTime;
+        private decimal _valuePerFlightTime { get; set; }
+        private decimal _valuePerLayoverTime { get; set; }
+        private decimal _maximumBasePrice;
+        private decimal _valuePerStop { get; set; }
+        private int _maximumStops;
 
         private void FindMinMaxBasePrice(List<Itinerary> discounted)
         {
@@ -76,27 +79,25 @@ namespace AssignmentB
         private void FindMinMaxContent(List<Itinerary> discounted)
         {
             this.FindMinMaxBasePrice(discounted);
-            this.FindMinMaxContent(discounted);
+            this.FindMinMaxStops(discounted);
             this.FindMinMaxFlightTime(discounted);
             this.FindMinMaxLayoverTime(discounted);
         }
 
-        private void generateParameters(Itinerary discounted)
+        public void generateParameters(Itinerary discounted)
         {
             decimal priceDiff = _publishedPrice - discounted.BaseFareInUSD;
             decimal parameterCount = 0;
+
             ResourceManager resourceManager = new ResourceManager(typeof(Resource));
             string myString = resourceManager.GetString("CompareParametersCount");
             if (Decimal.TryParse(myString, out parameterCount) == false)
                 throw new Exception();
-
             decimal perParameterPrice = priceDiff / parameterCount;
             _valuePerStop = perParameterPrice / (_maximumStops - _minimumStops);
             _valuePerFlightTime = perParameterPrice / (_maximumFlightTime - _minimumFlightTime).Minutes;
             _valuePerLayoverTime = perParameterPrice / (_maximumLayoverTime - _minimumLayoverTime).Minutes;
-            
         }
-
         private decimal GetMarkup(Itinerary discounted)
         {
             this.generateParameters(discounted);
@@ -111,12 +112,15 @@ namespace AssignmentB
             if (published == null || discounted == null)
                 throw new ArgumentNullException();
 
-            this._publishedPrice = published.BaseFareInUSD;
+            _publishedPrice = published.BaseFareInUSD;
             this.FindMinMaxContent(discounted);
-            for(int i=0;i<discounted.Count();i++)
+            for (int i = 0; i < discounted.Count(); i++)
             {
-                var markup=GetMarkup(discounted.ElementAt(i));
+                var markup = GetMarkup(discounted.ElementAt(i));
+                if ((markup+discounted.ElementAt(i).BaseFareInUSD) < published.TotalFareInUSD) 
                 discounted.ElementAt(i).MarkupInUSD = markup;
+                else
+                    discounted.ElementAt(i).BaseFareInUSD = published.BaseFareInUSD;
             }
             return discounted;
         }
