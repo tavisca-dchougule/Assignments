@@ -59,11 +59,9 @@
   <ItemGroup>
     <Content Include="JavaScript\Controller\Helper\FetchWebData.js" />
     <Content Include="JavaScript\Controller\WindowController.js" />
-    <Content Include="JavaScript\LoadWindow.js" />
-    <Content Include="JavaScript\Model\WindowModel.js" />
     <Content Include="JavaScript\Init.js" />
+    <Content Include="JavaScript\Model\WindowModel.js" />
     <Content Include="JavaScript\View\WindowView.js" />
-    <Content Include="JavaScript\WidgetCreate.js" />
     <Content Include="Resources\images\bg.png" />
     <Content Include="Resources\images\img.png" />
     <Content Include="Resources\images\widget.gif" />

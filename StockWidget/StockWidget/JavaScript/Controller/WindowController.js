@@ -9,7 +9,8 @@ $(".nav-tabs a").on("click", function () {
 StockWidget.Controller.WindowController = function () {
     
     function updateWindowContent(JSONobject) {
-        alert(JSONobject.name);
+        var windowView = new StockWidget.View.WindowView();
+        windowView.updateContent(JSONobject);
     };
     return{
         updateWindowContent:updateWindowContent

@@ -6,7 +6,12 @@ StockWidget.CreateStockWidget = function () {
         start: function () {
             document.write('<div id="stockWidget"></div>');
             document.write('<scr' + 'ipt type="text/JavaScript" src="JavaScript/Init.js"></scr' + 'ipt>');
-            var init = new window.StockWidget.Initializer();
+            //document.write('<script type="text/javascript" src="JavaScript/Initializer.js"></script>');
+            if (StockWidget.Initializer === undefined)
+                alert("hg");
+            window.StockWidget.Initializer = window.StockWidget.Initializer || {};
+           
+            var init = new StockWidget.Initializer();
             init.initialize();
         }
     };

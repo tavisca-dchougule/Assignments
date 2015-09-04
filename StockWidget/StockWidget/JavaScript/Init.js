@@ -1,7 +1,5 @@
 ﻿window.StockWidget = window.StockWidget || {};
-
 StockWidget.Initializer = function () {
-    var JavaScriptCode = null;
 
     return {
         initialize: function () {
@@ -13,7 +11,7 @@ StockWidget.Initializer = function () {
             document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>');
             document.write(' <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>');
 
-            JavaScriptCode = document.createElement("script");
+            var JavaScriptCode = document.createElement("script");
             JavaScriptCode.setAttribute('type', 'text/javascript');
             JavaScriptCode.setAttribute("src", 'JavaScript/LoadWindow.js');
             document.getElementById('stockWidget').appendChild(JavaScriptCode);
@@ -22,3 +20,4 @@ StockWidget.Initializer = function () {
         }
     };
 };
+alert("S");
