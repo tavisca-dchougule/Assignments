@@ -108,6 +108,9 @@ namespace AssignmentB
         }
         public List<Itinerary> CalculateMarkup(Itinerary published, List<Itinerary> discounted)
         {
+            if (published == null || discounted == null)
+                throw new ArgumentNullException();
+
             this._publishedPrice = published.BaseFareInUSD;
             this.FindMinMaxContent(discounted);
             for(int i=0;i<discounted.Count();i++)
